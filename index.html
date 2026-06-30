@@ -56,28 +56,28 @@
     <!-- מסך התלמיד (משחק מותאם למסך מלא) -->
     <div id="screen-student" class="hidden fixed inset-0 bg-black z-20 flex flex-col items-center justify-center overflow-hidden">
         
-        <!-- כותרת מרחפת עליונה (מעודכנת - שורה אחת נקייה) -->
-        <header class="absolute top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md p-3 md:p-4 border-b border-cyan-900/50 shadow-lg z-50 flex items-center justify-between gap-2 md:gap-4">
+        <!-- כותרת עליונה (דקה ומעל התמונה) -->
+        <header class="w-full shrink-0 bg-slate-950 border-b border-cyan-900/50 shadow-lg z-50 flex items-center justify-between px-2 py-1.5 md:px-4 md:py-2 gap-2">
             
             <!-- התקדמות (ימין) -->
-            <div id="student-progress-text" class="text-cyan-100 font-bold bg-[#0b1120] border border-cyan-800 px-3 md:px-5 py-1.5 rounded-full text-[10px] md:text-sm tracking-wide shadow-[0_0_10px_rgba(6,182,212,0.1)] whitespace-nowrap shrink-0">
+            <div id="student-progress-text" class="text-cyan-100 font-bold bg-[#0b1120] border border-cyan-800 px-3 md:px-5 py-1 rounded-full text-[10px] md:text-xs tracking-wide shadow-[0_0_10px_rgba(6,182,212,0.1)] whitespace-nowrap shrink-0">
                 חידה 1 מתוך X
             </div>
             
             <!-- הוראה מתחלפת (אמצע) -->
-            <h2 id="student-stage-title" class="text-[11px] md:text-base font-bold text-indigo-300 theme-font tracking-wider flex-1 text-center transition-opacity duration-500 opacity-100">
+            <h2 id="student-stage-title" class="text-[11px] md:text-sm font-bold text-indigo-300 theme-font tracking-wider flex-1 text-center transition-opacity duration-500 opacity-100 m-0">
                 <i class="fas fa-film ml-1"></i> צפו בסרטון לפני שתמשיכו
             </h2>
 
             <!-- נוטבוק (שמאל) -->
-            <button onclick="window.open('https://notebooklm.google.com/', '_blank')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 md:px-4 py-1.5 rounded-full text-[10px] md:text-sm font-bold text-slate-300 whitespace-nowrap transition-transform hover:scale-105 shadow-md shrink-0">
+            <button onclick="window.open('https://notebooklm.google.com/', '_blank')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 md:px-4 py-1 rounded-full text-[10px] md:text-xs font-bold text-slate-300 whitespace-nowrap transition-transform hover:scale-105 shadow-md shrink-0">
                 <i class="fas fa-database ml-1 text-cyan-500"></i> NotebookLM
             </button>
             
         </header>
 
-        <!-- קופסת מדיה מאוחדת (מסך מלא עם שמירה על יחס תמונה) -->
-        <div id="student-unified-container" class="hidden w-full h-full flex items-center justify-center bg-black">
+        <!-- קופסת מדיה מאוחדת (תופסת את כל שאר המקום שנותר) -->
+        <div id="student-unified-container" class="hidden w-full flex-1 flex items-center justify-center bg-black overflow-hidden relative">
             <div id="student-media-box" class="relative bg-black overflow-hidden transition-all duration-300 shadow-[0_0_50px_rgba(6,182,212,0.1)]">
                 
                 <!-- שכבת הוידאו -->
@@ -220,8 +220,10 @@
             if (levels.length === 0 || screens.student.classList.contains('hidden')) return;
             
             const ratio = 16 / 9; // יחס התמונה המקורי
-            let w = window.innerWidth;
-            let h = window.innerHeight;
+            
+            // חישוב השטח הפנוי (נטו) בניכוי הפס העליון הדק
+            let w = studentDOM.unifiedContainer.clientWidth;
+            let h = studentDOM.unifiedContainer.clientHeight;
 
             // חישוב המימדים כך שהתמונה תתפוס את המקסימום האפשרי תוך שמירה על היחס
             if (w / ratio > h) {
