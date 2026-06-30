@@ -56,24 +56,24 @@
     <!-- מסך התלמיד (משחק מותאם למסך מלא) -->
     <div id="screen-student" class="hidden fixed inset-0 bg-black z-20 flex flex-col items-center justify-center overflow-hidden">
         
-        <!-- כותרת מרחפת עליונה (מעודכנת) -->
-        <header class="absolute top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md p-4 border-b border-cyan-900/50 shadow-lg z-50 flex flex-col gap-2">
-            <div class="flex justify-between items-center w-full">
-                <h1 class="font-bold text-cyan-400 theme-font text-xl md:text-2xl tracking-widest">
-                    חדר בריחה דיגיטלי מונפש
-                </h1>
-                <div id="student-progress-text" class="text-cyan-100 font-bold bg-[#0b1120] border border-cyan-800 px-4 py-1 rounded-full text-xs md:text-sm tracking-wide shadow-[0_0_10px_rgba(6,182,212,0.1)]">
-                    חידה 1 מתוך X
-                </div>
+        <!-- כותרת מרחפת עליונה (מעודכנת - שורה אחת נקייה) -->
+        <header class="absolute top-0 left-0 w-full bg-slate-900/90 backdrop-blur-md p-3 md:p-4 border-b border-cyan-900/50 shadow-lg z-50 flex items-center justify-between gap-2 md:gap-4">
+            
+            <!-- התקדמות (ימין) -->
+            <div id="student-progress-text" class="text-cyan-100 font-bold bg-[#0b1120] border border-cyan-800 px-3 md:px-5 py-1.5 rounded-full text-[10px] md:text-sm tracking-wide shadow-[0_0_10px_rgba(6,182,212,0.1)] whitespace-nowrap shrink-0">
+                חידה 1 מתוך X
             </div>
-            <div class="flex justify-between items-center w-full border-t border-cyan-800/30 pt-2">
-                <h2 id="student-stage-title" class="text-xs md:text-sm font-bold text-indigo-300 theme-font tracking-wider flex-1">
-                    <i class="fas fa-film ml-1"></i> צפו בסרטון לפני שתמשיכו
-                </h2>
-                <button onclick="window.open('https://notebooklm.google.com/', '_blank')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold text-slate-300 whitespace-nowrap transition-transform hover:scale-105">
-                    <i class="fas fa-database ml-1 text-cyan-500"></i> NotebookLM
-                </button>
-            </div>
+            
+            <!-- הוראה מתחלפת (אמצע) -->
+            <h2 id="student-stage-title" class="text-[11px] md:text-base font-bold text-indigo-300 theme-font tracking-wider flex-1 text-center transition-opacity duration-500 opacity-100">
+                <i class="fas fa-film ml-1"></i> צפו בסרטון לפני שתמשיכו
+            </h2>
+
+            <!-- נוטבוק (שמאל) -->
+            <button onclick="window.open('https://notebooklm.google.com/', '_blank')" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 px-3 md:px-4 py-1.5 rounded-full text-[10px] md:text-sm font-bold text-slate-300 whitespace-nowrap transition-transform hover:scale-105 shadow-md shrink-0">
+                <i class="fas fa-database ml-1 text-cyan-500"></i> NotebookLM
+            </button>
+            
         </header>
 
         <!-- קופסת מדיה מאוחדת (מסך מלא עם שמירה על יחס תמונה) -->
